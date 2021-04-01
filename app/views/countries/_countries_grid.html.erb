@@ -1,15 +1,15 @@
-<div id='items_container' class="container-fluid mt-4">
+<div class="container-fluid mt-4">
+<div class="row mb-4">
+  <div class="col"><h5 class="text-center">List of french embassies by country</h5></div>
+</div>
   <div class="row justify-content-center">
-    <% countries.each do |country| %>
-      <div class="col-xs col-sm-2 col-md-4 mb-4">
-        <div class="card mb-4">
-          <h3 class="card-header text-center"> <%= country.en_title %></h3>
-            <p>=== Image ===</p>
-          <div class="card-body">
-            <%= link_to 'See more', country_path(country.id) %>
-          </div>
+    <% @countries.each do |country| %>
+      <div class="col-xs col-sm-2 p-1">
+        <div class="card mb-2">
+          <div class="card-header bg-primary text-white pl-2 pr-0 py-1"><%= link_to "#{country.en_title}", country_path(country.id), class: "text-white text-decoration-none" %></div>
+          <p>=== Image ===</p>
         </div>
       </div>
-    <%end %>
+    <% end %>
   </div>
 </div>
