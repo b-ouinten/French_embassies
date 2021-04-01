@@ -6,4 +6,9 @@ class CountriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get show" do
+    get countries_show_url
+    assert_response :success
+  end
+
 end
