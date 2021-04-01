@@ -1,24 +1,10 @@
-# README
+Hello !
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my apps, it provides a french embassies directory.
 
-Things you may want to cover:
+## Instructions
+There is some tasks to launche, to do this run the following :
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- rails import_data:import_foreigners_countings
+- rails import_data:import_embassies
+- rails import_data:import_countries
