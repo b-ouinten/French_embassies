@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  country_title: MyString
+  year: MyString
+  number_of_foreigners: 1
+
+two:
+  country_title: MyString
+  year: MyString
+  number_of_foreigners: 1
