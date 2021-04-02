@@ -1,38 +1,20 @@
-<div class="container-fluid">
+<% if @embassy %>
   <div class="card mb-3">
-    <div class="row no-gutters">
-      <div class="col-lg-4 text-center">
-        <%= image_tag static_map(embassy), style: "width: 100%; height: 100%;" %>
+    <div class="row text-center">
+      <div class="col-md-6">
+        <%= image_tag static_map(@embassy) %>
       </div>
-      <div class="col-lg-8">
-        <div class="card-body">
-          <h5 class="card-title">Embassy details :</h5>
-          <p class="card-text mb-2"><span class="font-weight-bold">Country</span> : <%= embassy.country.en_title %></p>
-          <p class="card-text mb-2"><span class="font-weight-bold">Address</span> : <%= get_address(embassy.latitude, embassy.longitude) %></p>
-          <p class="card-text mb-2"><span class="font-weight-bold">Latitude</span> : <%= embassy.latitude %></p>
-          <p class="card-text mb-2"><span class="font-weight-bold">Longitude</span> : <%= embassy.longitude %></p>
-        </div>
+      <div class="col-md-6">
+        <%= image_tag street_view(@embassy) %>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h5 class="card-title mt-3">French nationals by year :</h5>
-      <div class="row">
-        <% embassy.country.french_foreigners_countings.each do |row| %>
-          <div class="col-1 px-1">
-            <div class="card text-white bg-primary mb-2">
-              <div class="card-body p-1">
-                <div class="card-title text-center mb-1"><%= row.year %></div>
-                <div class="card-text text-center"><%= row.number_of_foreigners %></div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
+    <div class="card-body text-center px-5 mt-4">
+      <h5 class="card-title">French embassy in <%= @country.en_title %></h5>
+      <p class="card-text mb-2"><span class="font-weight-bold">Address</span> : <%= get_address(@embassy.latitude, @embassy.longitude) %></p>
+      <p class="card-text mb-2"><span class="font-weight-bold">Latitude</span> : <%= @embassy.latitude %></p>
+      <p class="card-text mb-2"><span class="font-weight-bold">Longitude</span> : <%= @embassy.longitude %></p>
     </div>
   </div>
-</div>
+<% else %> 
+  <div>Embassy informations are unavailable !</div>
+<% end %>

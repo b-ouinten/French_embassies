@@ -6,14 +6,15 @@
     <% @countries.each do |country| %>
       <div class="col-xs col-sm-2 p-1">
         <div class="card mb-2">
-          <div class="card-header bg-primary text-white pl-2 pr-0 py-1"><%= link_to "#{country.en_title}", country_path(country.id), class: "text-white text-decoration-none" %></div>
+          <div class="card-header bg-primary text-white pl-2 pr-0 py-1"> <%= country.en_title %></div>
           <div class="text-center">
             <% flag_path = "#{country.code_2}.png" %>
-            <% if asset_exists?(flag_path) %>
-              <%= image_tag flag_path, alt: "flag", width: 50, height: 30 %>
-            <% else %>
-              <%= image_tag "not-found.png", alt: "flag_not_found", width: 50, height: 30 %>
-            <% end %>
+            <%= link_to  (if asset_exists?(flag_path) 
+                            image_tag flag_path, alt: "flag", width: 50, height: 30
+                          else
+                            image_tag "not-found.png", alt: "flag_not_found", width: 50, height: 30
+                          end), 
+            country_path(country.id) %>
           </div>
         </div>
       </div>

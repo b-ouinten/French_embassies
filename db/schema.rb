@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_083053) do
+ActiveRecord::Schema.define(version: 2021_04_02_190102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_04_01_083053) do
   end
 
   create_table "french_embassies", force: :cascade do |t|
-    t.string "country_title"
     t.float "latitude"
     t.float "longitude"
     t.string "coordinates"
@@ -37,7 +36,6 @@ ActiveRecord::Schema.define(version: 2021_04_01_083053) do
   end
 
   create_table "french_foreigners_countings", force: :cascade do |t|
-    t.string "country_title"
     t.string "year"
     t.integer "number_of_foreigners"
     t.bigint "country_id"
