@@ -9,8 +9,7 @@
           <div class="card-header bg-primary text-white pl-2 pr-0 py-1"><%= link_to "#{country.en_title}", country_path(country.id), class: "text-white text-decoration-none" %></div>
           <div class="text-center">
             <% flag_path = "flags/#{country.code_2}.png" %>
-            <% asset_exists = Rails.application.assets.find_asset(flag_path) != nil %>
-            <% if asset_exists %>
+            <% if asset_exists?(flag_path) %>
               <%= image_tag flag_path, width: 50, height: 30 %>
             <% else %>
               <%= image_tag "not-found.png", width: 50, height: 30 %>
