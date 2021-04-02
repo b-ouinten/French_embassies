@@ -4,8 +4,6 @@ class CountriesController < ApplicationController
   end
 
   def show
-    puts '*' * 30
-    puts 'hello'
-    puts '*' * 30
+    @country = Country.find(params[:id])
   end
 end

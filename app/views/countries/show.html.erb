@@ -1,1 +1,4 @@
-<img src=<%=%>/>
+<div class="jumbotron">
+  <%= image_tag street_view(@country.french_embassy), class: "img-fluid" %>
+</div>
+<%= render "embassy_details", embassy: @country.french_embassy %>

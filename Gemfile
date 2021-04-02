@@ -6,6 +6,8 @@ ruby '2.7.2'
 # Aditional gems needed for this project
 gem 'pry'
 gem "table_print"
+gem 'geocoder', '~> 1.3', '>= 1.3.7'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4'
