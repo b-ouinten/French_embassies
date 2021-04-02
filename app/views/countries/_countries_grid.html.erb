@@ -7,7 +7,15 @@
       <div class="col-xs col-sm-2 p-1">
         <div class="card mb-2">
           <div class="card-header bg-primary text-white pl-2 pr-0 py-1"><%= link_to "#{country.en_title}", country_path(country.id), class: "text-white text-decoration-none" %></div>
-          <p>=== Image ===</p>
+          <div class="text-center">
+            <% flag_path = "flags/#{country.code_2}.png" %>
+            <% asset_exists = Rails.application.assets.find_asset(flag_path) != nil %>
+            <% if asset_exists %>
+              <%= image_tag flag_path, width: 50, height: 30 %>
+            <% else %>
+              <%= image_tag "not-found.png", width: 50, height: 30 %>
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>
