@@ -10,9 +10,9 @@
           <div class="text-center">
             <% flag_path = "#{country.code_2}.png" %>
             <% if asset_exists?(flag_path) %>
-              <%= image_tag flag_path, width: 50, height: 30 %>
+              <%= image_tag flag_path, alt: "flag", width: 50, height: 30 %>
             <% else %>
-              <%= image_tag "not-found.png", width: 50, height: 30 %>
+              <%= image_tag "not-found.png", alt: "flag_not_found", width: 50, height: 30 %>
             <% end %>
           </div>
         </div>
