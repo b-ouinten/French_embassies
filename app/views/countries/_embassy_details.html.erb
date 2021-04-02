@@ -1,3 +1,4 @@
+<h5 class="text-center mb-4">Embassy of France in <%= @country.en_title %></h5>
 <% if @embassy %>
   <div class="card mb-3">
     <div class="row text-center">
@@ -9,7 +10,6 @@
       </div>
     </div>
     <div class="card-body text-center px-5 mt-4">
-      <h5 class="card-title">French embassy in <%= @country.en_title %></h5>
       <p class="card-text mb-2"><span class="font-weight-bold">Address</span> : <%= get_address(@embassy.latitude, @embassy.longitude) %></p>
       <p class="card-text mb-2"><span class="font-weight-bold">Latitude</span> : <%= @embassy.latitude %></p>
       <p class="card-text mb-2"><span class="font-weight-bold">Longitude</span> : <%= @embassy.longitude %></p>
