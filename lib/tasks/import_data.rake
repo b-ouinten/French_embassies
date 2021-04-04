@@ -68,7 +68,7 @@ namespace :import_data do
       coordinates = values.pop(2).join(',')
       values.push(coordinates)
       
-      country = Country.where(fr_title_normalized: normalize(values[0])).first
+      country = Country.where("fr_title_normalized LIKE ?", "%" + normalize(values[0]) + "%").first
       country_id = country ? country.id : nil
       values.push(country_id)
 
@@ -104,8 +104,7 @@ namespace :import_data do
       end
         .flatten!
       
-      country = get_country(values[0])
-                    
+      country = Country.where("fr_title_normalized LIKE ?", "%" + normalize(values[0]) + "%").first
       country_id = country ? country.id : nil
       
       values.push(country_id)
