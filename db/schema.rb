@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_02_190102) do
+ActiveRecord::Schema.define(version: 2021_04_04_062039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_04_02_190102) do
     t.string "en_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "fr_title_normalized"
   end
 
   create_table "french_embassies", force: :cascade do |t|
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_04_02_190102) do
     t.bigint "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country_title"
     t.index ["country_id"], name: "index_french_embassies_on_country_id"
   end
 
@@ -41,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_04_02_190102) do
     t.bigint "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country_title"
     t.index ["country_id"], name: "index_french_foreigners_countings_on_country_id"
   end
 

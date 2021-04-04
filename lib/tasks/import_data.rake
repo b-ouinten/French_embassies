@@ -22,25 +22,6 @@ def normalize(str)
   result
 end
 
-def get_country(country_title)
-  Country.where("
-    REPLACE(
-      REPLACE(
-        REPLACE(
-          REPLACE(
-            REPLACE(
-              REPLACE(
-                REPLACE(
-                  REPLACE(LOWER(fr_title),'à', 'a') 
-                ,'è', 'e') 
-              ,'é', 'e')
-            ,'ì', 'i')
-          ,'ï', 'i')
-        ,'ò', 'o') 
-      ,'ù', 'u') 
-    ,'ç', 'c') LIKE ?", "%" + normalize(country_title)  + "%").first
-end
-
 namespace :import_data do
   desc "update the countries table with countries.csv data"
   task import_countries: :environment do
@@ -54,7 +35,7 @@ namespace :import_data do
     counter = 0
     file = 'csv/countries.csv'
     CSV.foreach(file, headers: true) do |values|
-      country_hash = values.to_hash
+      country_hash = values.to_hash.merge(fr_title_normalized: normalize(values[4]))
       Country.create!(country_hash)
       counter += 1
     end
@@ -87,7 +68,7 @@ namespace :import_data do
       coordinates = values.pop(2).join(',')
       values.push(coordinates)
       
-      country = get_country(values[0])
+      country = Country.where(fr_title_normalized: normalize(values[0])).first
       country_id = country ? country.id : nil
       values.push(country_id)
 
