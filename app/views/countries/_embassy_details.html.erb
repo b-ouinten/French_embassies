@@ -1,20 +1,20 @@
 <h5 class="text-center mb-4">Embassy of France in <%= @country.en_title %></h5>
 <% if @embassy %>
-  <div class="card mb-3">
+  <div class="card mb-3 pt-4 pt-md-5">
     <div class="row text-center">
-      <div class="col-md-6">
-        <%= image_tag static_map(@embassy) %>
+      <div class="col-md-6 mb-3 mb-md-0">
+        <%= image_tag static_map(@embassy), class: "fit-image" %>
       </div>
       <div class="col-md-6">
-        <%= image_tag street_view(@embassy) %>
+        <%= image_tag street_view(@embassy), class: "fit-image" %>
       </div>
     </div>
-    <div class="card-body text-center px-5 mt-4">
+    <div class="card-body text-center px-5">
       <p class="card-text mb-2"><span class="font-weight-bold">Address</span> : <%= get_address(@embassy.latitude, @embassy.longitude) %></p>
       <p class="card-text mb-2"><span class="font-weight-bold">Latitude</span> : <%= @embassy.latitude %></p>
       <p class="card-text mb-2"><span class="font-weight-bold">Longitude</span> : <%= @embassy.longitude %></p>
     </div>
   </div>
 <% else %> 
-  <div>Embassy informations are unavailable !</div>
+  <div>Embassy informations are not available !</div>
 <% end %>

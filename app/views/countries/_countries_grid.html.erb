@@ -1,18 +1,18 @@
 <div class="container-fluid mt-4">
-<div class="row mb-4">
-  <div class="col"><h5 class="text-center">List of french embassies by country</h5></div>
-</div>
+  <div class="row mb-4">
+    <div class="col"><h5 class="text-center">List of french embassies by country</h5></div>
+  </div>
   <div class="row justify-content-center">
     <% @countries.each do |country| %>
       <div class="col-xs col-sm-2 p-1">
         <div class="card mb-2">
           <div class="card-header bg-primary text-white pl-2 pr-0 py-1"> <%= country.en_title %></div>
           <div class="text-center">
-            <% flag_path = "#{country.code_2}.png" %>
+            <% flag_path = "flags/#{country.code_2}.png" %>
             <%= link_to  (if asset_exists?(flag_path) 
                             image_tag flag_path, alt: "flag", width: 50, height: 30
                           else
-                            image_tag "not-found.png", alt: "flag_not_found", width: 50, height: 30
+                            image_tag "flags/not-found.png", alt: "flag_not_found", width: 50, height: 30
                           end), 
             country_path(country.id) %>
           </div>
