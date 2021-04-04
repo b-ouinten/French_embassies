@@ -67,18 +67,18 @@ namespace :import_data do
       
       coordinates = values.pop(2).join(',')
       values.push(coordinates)
-      
-      country = Country.where("fr_title_normalized LIKE ?", "%" + normalize(values[0]) + "%").first
+
+      country = Country.find_by(fr_title_normalized: normalize(values[0]))
       country_id = country ? country.id : nil
       values.push(country_id)
-
+      
       keys = ['country_title', 'latitude', 'longitude', 'coordinates', 'country_id']
       embassy_hash = keys.zip(values).to_h
       
       FrenchEmbassy.create!(embassy_hash)
       counter += 1
     end
-
+    
     # Check integrity
     if counter == model.count
       puts 'Data imported successfully'
@@ -86,7 +86,7 @@ namespace :import_data do
       puts 'Something wrong !'
     end
   end
-
+  
   desc "update the fench_foreigners_countings table with french_foreigners_countings.csv data"
   task import_foreigners_countings: :environment do
     # Delete french_foreigners_countings table
@@ -102,9 +102,9 @@ namespace :import_data do
       values.map! do |item|
         item.split(';')
       end
-        .flatten!
+      .flatten!
       
-      country = Country.where("fr_title_normalized LIKE ?", "%" + normalize(values[0]) + "%").first
+      country = Country.find_by(fr_title_normalized: normalize(values[0]))
       country_id = country ? country.id : nil
       
       values.push(country_id)
