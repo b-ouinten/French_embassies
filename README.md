@@ -1,6 +1,6 @@
 Hello !
 
-This is my app, it provides a french embassies directory.
+This is my app, it is mobile friendly app, it provides a french embassies directory.
 
 ### Instructions
 There is some tasks to launche, to do this run the following :
